@@ -14,8 +14,8 @@ import argparse
 
 
 def validate_day(day: int) -> bool:
-    """Validate that day is between 1 and 25."""
-    return 1 <= day <= 25
+    """Validate that day is between 1 and 12."""
+    return 1 <= day <= 12
 
 
 def get_session_cookie() -> Optional[str]:
@@ -43,16 +43,16 @@ def download_input(day: int, year: int = 2025, silent: bool = False) -> Optional
     Download AoC input for a specific day.
 
     Args:
-        day: Day number (1-25)
+        day: Day number (1-12) 
         year: Year (default: 2025)
         silent: If True, don't print error messages (default: False)
 
     Returns:
         Input data as string, or None if download fails
     """
-    if not 1 <= day <= 25:
+    if not validate_day(day):
         if not silent:
-            print(f"❌ Error: Day must be between 1 and 25, got {day}")
+            print(f"❌ Error: Day must be between 1 and 12, got {day}")
         return None
 
     session_cookie = get_session_cookie()
@@ -92,7 +92,7 @@ def download_input(day: int, year: int = 2025, silent: bool = False) -> Optional
 def create_day(day: int) -> None:
     """Create a new day folder with boilerplate files and auto-download input."""
     if not validate_day(day):
-        print(f"❌ Error: Day must be between 1 and 25, got {day}")
+        print(f"❌ Error: Day must be between 1 and 12, got {day}")
         sys.exit(1)
 
     day_folder = Path(__file__).parent / f"aoc2025" / f"day{day}"
@@ -136,7 +136,7 @@ def create_day(day: int) -> None:
 def run_day(day: int, test: bool = False) -> None:
     """Run a specific day's solution."""
     if not validate_day(day):
-        print(f"❌ Error: Day must be between 1 and 25, got {day}")
+        print(f"❌ Error: Day must be between 1 and 12, got {day}")
         sys.exit(1)
 
     day_folder = Path(__file__).parent / f"aoc2025" / f"day{day}"
@@ -210,12 +210,12 @@ Examples:
 
     # Create command
     create_parser = subparsers.add_parser("create", help="Create a new day")
-    create_parser.add_argument("day", type=int, help="Day number (1-25)")
+    create_parser.add_argument("day", type=int, help="Day number (1-12)")
 
     # Run command
     run_parser = subparsers.add_parser("run", help="Run a day's solution")
     run_parser.add_argument("day", nargs="?", default="all",
-                           help="Day number (1-25) or 'all' to run all days (default: all)")
+                           help="Day number (1-12) or 'all' to run all days (default: all)")
 
     args = parser.parse_args()
 
