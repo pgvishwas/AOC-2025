@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import Any, List, Optional, Union
 
 
-def read_input(filename: str = "input.txt", split: bool = True, test: bool = False) -> Union[str, List[str]]:
+def read_input(filename: str = "input.txt", split: bool = True, split_by: str = "\n", test: bool = False) -> Union[str, List[str]]:
     """
     Read input file relative to the calling script.
 
@@ -42,7 +42,7 @@ def read_input(filename: str = "input.txt", split: bool = True, test: bool = Fal
     content = file_path.read_text().strip()
 
     if split:
-        return content.split("\n")
+        return content.split(split_by)
     return content
 
 
