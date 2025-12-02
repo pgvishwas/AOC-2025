@@ -33,6 +33,7 @@ def get_session_cookie() -> Optional[str]:
     # Try .aoc_session file
     session_file = Path(__file__).parent / ".aoc_session"
     if session_file.exists():
+        print(session_file.read_text().strip())
         return session_file.read_text().strip()
 
     return None
