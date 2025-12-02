@@ -62,6 +62,8 @@ uv sync
 ### Create a new day
 ```bash
 python main.py create 1
+# or (recommended)
+uv run main.py create 1
 ```
 This creates a folder structure:
 ```
@@ -76,9 +78,13 @@ aoc2025/day1/
 ```bash
 # Run all days
 python main.py
+# or (recommended)
+uv run main.py
 
 # Run specific day
 python main.py run 1
+# or (recommended)
+uv run main.py run 1
 ```
 
 ## Project Structure
