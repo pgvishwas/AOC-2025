@@ -46,7 +46,7 @@ def star1() -> int:
     for d in input_data:
         data.append(d.split('\n')[0])
     move_data = [[item[0], int(item[1:])] for item in data]
-    pointer,password,safe_length = 50,0.100
+    pointer,password,safe_length = 50,0,100
     for moves in move_data:
         move_value = moves[1]%safe_length
         if moves[0]=='L':
