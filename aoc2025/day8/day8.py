@@ -105,7 +105,6 @@ def star2() -> int:
     for d in data:
         x, y, z = map(int, d.split(","))
         junction_boxes.append([x, y, z])
-
     potential_ids = list(range(num_boxes))
     potential_combos = list(combinations(potential_ids, 2))
     edge_list = []
