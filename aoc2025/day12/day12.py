@@ -34,9 +34,7 @@ def solve_christmas_packing(data):
 
 def star1() -> int:
     data = read_input(test = False)
-    input_data = data[30:]
-    print(input_data)
-    return solve_christmas_packing(input_data)
+
 
 
 def star2() -> int:
